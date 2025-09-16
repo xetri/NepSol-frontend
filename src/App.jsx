@@ -1,21 +1,26 @@
 import React from 'react'
-import Navbar from './Components/Navbar/Navbar'
-import Body from './Components/Body/Body'
-import Features from './Components/Contentss/Features'
-import TestimonialSection from './Components/Comments/TestimonialSection'
-import Footer from './Components/Last/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router'
+
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
 
 const App = () => {
   return (
-    <div>
-      <Navbar/>
-      <Body/>
-      <Features/>
-      <TestimonialSection/>
-      <Footer/>
-      
-      
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          { /* Add specific routes */ }
+          <Route path="/" element={<Home/>}/>
+          { /* 
+            <Route path="/dashboard" element={Dashboard}/>
+            // ^^^ Creates dynamic route with parameter of creator
+            <Route path="/profile/:creator" element={Profile}/>
+            */}
+          { /* 404 Page */ }
+          <Route element={<NotFound/>}/>
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
