@@ -1,0 +1,161 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* Left Side */
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #bbb;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.primary-btn {
+  padding: 12px 24px;
+  background-color: #3b59ff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+  background-color: #2e43cc;
+}
+
+.secondary-btn {
+  padding: 12px 24px;
+  background-color: transparent;
+  border: 1.5px solid #eee;
+  border-radius: 6px;
+  color: #eee;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background-color: #eee;
+  color: #121212;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  gap: 30px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.stats span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-card {
+  position: relative;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(59, 89, 255, 0.35);
+  width: 350px;
+  height: 220px;
+  padding: 24px;
+  padding-top: 40px;
+  /* Remove justify-content and align-items to avoid conflicts */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+/* Profile circle stays absolute top-left */
+.profile-circle {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #3b59ff;
+  margin-bottom: 0;
+}
+
+/* Position buttons below the circle */
+.card-buttons {
+  position: absolute;
+  top: 110px;  /* 16px top + 80px height + some gap */
+  left: 16px;
+  display: flex;
+  gap: 16px;
+}
+
+
+/* Button Styles */
+.support-btn,
+.follow-btn {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 40px;
+}
+
+/* Support - Outline */
+.support-btn {
+  background-color: transparent;
+  color: #3b59ff;
+  border: 2px solid #3b59ff;
+}
+
+.support-btn:hover {
+  background-color: #3b59ff;
+  color: white;
+}
+
+/* Follow - Filled */
+.follow-btn {
+  background-color: #3b59ff;
+  color: white;
+  border: none;
+}
+
+.follow-btn:hover {
+  background-color: #2e43cc;
+}

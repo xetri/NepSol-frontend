@@ -1,0 +1,119 @@
+nav {
+  width: 100%;
+  background-color: #27272767;
+  color:blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Left side: logo and brand */
+.logosection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 24px;
+  height: auto;
+  margin-left: 200px;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #052eff;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Right side container */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 260px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #333;
+  flex: 1;
+  font-size: 14px;
+}
+
+.search-bar input::placeholder {
+  color: #999;
+}
+
+.search-icon {
+  font-size: 16px;
+  color: #555;
+  margin-left: 8px;
+}
+
+/* Navigation links */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+nav ul li:hover {
+  background-color: #eceeff;
+  color: #3366ff;
+}
+
+/* Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.signin-btn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.getstarted-btn {
+  padding: 6px 14px;
+  background-color: #3366ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
