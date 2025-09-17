@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import CreatorLogin from './Components/Authpage/CreatorLogin'
+import Dash from './Components/Dashboard/Dash'
+
+
 
 const App = () => {
   return (
@@ -19,6 +22,8 @@ const App = () => {
             <Route path="/profile/:creator" element={Profile}/>
             */}
           { /* 404 Page */ }
+          <Route path="/dashboard" element={<Dash />} />
+
           <Route element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
