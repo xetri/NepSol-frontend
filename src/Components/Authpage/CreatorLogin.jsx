@@ -3,14 +3,34 @@ import CenteredContainer from './Centercontainer'; // adjust path as needed
 import logo from '../../assets/googleicon.png';
 import "./CreatorLogin.css"
 
+import { ServerURL } from "../../config";
+
 import { auth } from "../../firebase";
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const CreatorLogin = () => {
-  
   async function SignInWithGoogle() {
     const provider = new GoogleAuthProvider();
+
+    console.log(auth.currentUser)
+
     const res = await signInWithPopup(auth, provider);
+    const token = await res.user.getIdToken();
+
+    fetch(`${ServerURL}/api/auth/google`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token })
+    })
+      .then(res => {
+        console.log(auth.currentUser)
+      })
+      .catch(e => {
+        console.log(e.message)
+    })
+
   }
 
   return (
