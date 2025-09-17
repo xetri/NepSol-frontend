@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
-
 import CreatorLogin from './Components/Authpage/CreatorLogin'
 
 const App = () => {
