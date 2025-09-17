@@ -12,7 +12,7 @@ const App = () => {
         <Routes>
           { /* Add specific routes */ }
           <Route path="/" element={<Home/>}/>
-          <Route path="/login" element={<CreatorLogin/>}></Route>
+          <Route path="/login" element={<CreatorLogin/>}/>
           { /* 
             <Route path="/dashboard" element={Dashboard}/>
             // ^^^ Creates dynamic route with parameter of creator
