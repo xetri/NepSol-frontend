@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
+import CreatorLogin from './Components/Authpage/CreatorLogin'
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Routes>
           { /* Add specific routes */ }
           <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<CreatorLogin/>}></Route>
           { /* 
             <Route path="/dashboard" element={Dashboard}/>
             // ^^^ Creates dynamic route with parameter of creator
