@@ -1,5 +1,6 @@
 import React from 'react';
 import CenteredContainer from './Centercontainer'; // adjust path as needed
+import logo from '../../assets/googleicon.png';
 
 const CreatorLogin = () => {
   return (
@@ -26,11 +27,15 @@ const CreatorLogin = () => {
         />
 
         <button type="submit" className="signin-button">Sign In</button>
+        
+        <button type="submit" className="signin-button2">
+            <img src={logo} alt="logo" className='icon'/> Sign In with Google</button>
+         
       </form>
 
       <div className="login-links">
         <p><a href="/forgot-password">Forgot your password?</a></p>
-        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        <p className='Ac'>Don't have an account? <a href="/signup">Sign up</a></p>
       </div>
     </CenteredContainer>
   );
