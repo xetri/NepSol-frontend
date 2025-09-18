@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
+  background-color: #121212; /* dark base */
   color: #eee;
   margin: 0;
   padding: 0;
@@ -15,6 +15,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   gap: 40px;
+  margin-top: 69px;
 }
 
 /* Left Side */
@@ -27,6 +28,9 @@ body {
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
+  background: linear-gradient(90deg, #14f195, #9945ff, #19fb9b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-text p {
@@ -42,34 +46,36 @@ body {
   margin-bottom: 40px;
 }
 
+/* Primary Button (Gradient) */
 .primary-btn {
   padding: 12px 24px;
-  background-color: #3b59ff;
+  background: linear-gradient(90deg, #14f195, #9945ff, #19fb9b);
   border: none;
   border-radius: 6px;
-  color: white;
+  color: #121212;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .primary-btn:hover {
-  background-color: #2e43cc;
+  transform: scale(1.05);
 }
 
+/* Secondary Button (Outline) */
 .secondary-btn {
   padding: 12px 24px;
   background-color: transparent;
-  border: 1.5px solid #eee;
+  border: 1.5px solid #14f195;
   border-radius: 6px;
-  color: #eee;
+  color: #14f195;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .secondary-btn:hover {
-  background-color: #eee;
+  background-color: #14f195;
   color: #121212;
 }
 
@@ -87,23 +93,19 @@ body {
   gap: 6px;
 }
 
+/* Hero Card */
 .hero-card {
   position: relative;
   background-color: #1e1e1e;
   border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(59, 89, 255, 0.35);
+  box-shadow: 0 6px 24px rgba(20, 241, 149, 0.35);
   width: 350px;
   height: 220px;
   padding: 24px;
   padding-top: 40px;
-  /* Remove justify-content and align-items to avoid conflicts */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
-  /* align-items: center; */
 }
 
-/* Profile circle stays absolute top-left */
+/* Profile Circle */
 .profile-circle {
   position: absolute;
   top: 16px;
@@ -111,51 +113,49 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #3b59ff;
-  margin-bottom: 0;
+  background: linear-gradient(135deg, #14f195, #9945ff, #19fb9b);
 }
 
-/* Position buttons below the circle */
+/* Card Buttons */
 .card-buttons {
   position: absolute;
-  top: 110px;  /* 16px top + 80px height + some gap */
+  top: 110px;
   left: 16px;
   display: flex;
   gap: 16px;
 }
 
+/* Support - Outline */
+.support-btn {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #14f195;
+  border: 2px solid #14f195;
+  transition: all 0.3s ease;
+}
 
-/* Button Styles */
-.support-btn,
+.support-btn:hover {
+  background: #14f195;
+  color: #121212;
+}
+
+/* Follow - Gradient */
 .follow-btn {
   padding: 10px 20px;
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
-}
-
-/* Support - Outline */
-.support-btn {
-  background-color: transparent;
-  color: #3b59ff;
-  border: 2px solid #3b59ff;
-}
-
-.support-btn:hover {
-  background-color: #3b59ff;
-  color: white;
-}
-
-/* Follow - Filled */
-.follow-btn {
-  background-color: #3b59ff;
-  color: white;
   border: none;
+  background: linear-gradient(90deg, #14f195, #9945ff, #19fb9b);
+  color: #121212;
+  transition: transform 0.2s ease;
 }
 
 .follow-btn:hover {
-  background-color: #2e43cc;
+  transform: scale(1.05);
 }

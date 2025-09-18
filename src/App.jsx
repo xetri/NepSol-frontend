@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import CreatorLogin from './Components/Authpage/CreatorLogin'
 import Dash from './Components/Dashboard/Dash'
+import Profile from './Components/Profile/Profile'
 
 
 
@@ -23,6 +24,7 @@ const App = () => {
             */}
           { /* 404 Page */ }
           <Route path="/dashboard" element={<Dash />} />
+          <Route path="/Profile" element={<Profile/>}/>
 
           <Route element={<NotFound/>}/>
         </Routes>
