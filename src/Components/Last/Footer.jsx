@@ -9,22 +9,24 @@ export default function Footer() {
       <div className="footer-top">
         {/* Left section: Logo and description */}
         <div className="footer-brand">
-          <img src={logo} alt="NEPSOL Logo" className="footer-logo" />
-          <h2>NEPSOL</h2>
-          <p>
-            Empowering creators to build sustainable careers through community support
-            and innovative monetization tools.
-          </p>
+          <img src={logo} alt="NepSOL Logo" className="footer-logo" />
+          <h2>NepSOL</h2>
+          <br />
           <div className="social-icons">
             <FaTwitter />
             <FaInstagram />
             <FaYoutube />
-            <FaGithub />
+            <FaGithub href="https://github.com/xetri/NepSOL" />
           </div>
         </div>
 
         {/* Right section: Links */}
         <div className="footer-links">
+          <p>
+            Empowering creators to build sustainable careers through community support and innovative monetization tools.
+          </p>
+        </div>
+        {/* <div className="footer-links">
           <div>
             <h4>For Creators</h4>
             <ul>
@@ -52,12 +54,12 @@ export default function Footer() {
               <li>Contact</li>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom bar */}
       <div className="footer-bottom">
-        <p>© 2024 NEPSOL. All rights reserved.</p>
+        <p>© 2025 NepSOL. All rights reserved.</p>
         <div className="footer-policy">
           <span>Privacy Policy</span>
           <span>Terms of Service</span>

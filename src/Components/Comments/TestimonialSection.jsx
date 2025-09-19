@@ -4,7 +4,7 @@ import "./TestimonialSection.css";
 const testimonials = [
   {
     stars: 5,
-    quote: `"CreatorHub transformed my art from a hobby into a sustainable career. The community support is incredible!"`,
+    quote: `"NepSOL transformed my art from a hobby into a sustainable career. The community support is incredible!"`,
     name: "Sarah Chen",
     role: "Digital Artist",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",

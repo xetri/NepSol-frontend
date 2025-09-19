@@ -39,9 +39,6 @@ const Features = () => {
   return (
     <section className="features-section">
       <h2>Everything you need to succeed as a creator</h2>
-      <p className="features-subtext">
-        From monetization tools to community building features, we provide the complete toolkit for creative professionals.
-      </p>
 
       <div className="features-grid">
         {featuresData.map((feature, index) => (

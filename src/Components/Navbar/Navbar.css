@@ -25,7 +25,6 @@ nav {
 .logo {
   width: 28px;
   height: auto;
-  margin-left: 200px;
 }
 
 .brand-name {
@@ -54,6 +53,13 @@ nav {
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 260px;
 }
+
+@media (max-width: 768px) {
+  .search-bar {
+    display: none;
+  }
+}
+
 
 .search-bar input {
   border: none;

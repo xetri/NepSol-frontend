@@ -1,67 +1,150 @@
-import React from "react";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router";
+import { toast } from "react-hot-toast";
+
+import { useWallet } from "@solana/wallet-adapter-react";
+import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { Connection, PublicKey, Transaction, sendAndConfirmTransaction, SystemProgram, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import SolanaIcon from "../../assets/solana.png";
+
+import { ServerURL, SolanaEndpoint } from "../../config";
 import "./Profile.css";
-import { auth } from "../../firebase";
+import { useAuth } from "../../context/AuthContext"
+import { useEffect } from "react";
 
 const Profile = () => {
-  const user = auth.currentUser;
+  const goto = useNavigate();
+  const { user, loading } = useAuth();
+  const { id } = useParams();
+  const [profile, setProfile] = useState(null);
+
+  const connection = new Connection(SolanaEndpoint, "confirmed");
+
+  const { setVisible } = useWalletModal();
+  const { publicKey, connect, connected, disconnect, signTransaction } = useWallet();
+
+  const [amount, setAmount] = useState(0.1);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(`${ServerURL}/api/profile/${id}`);
+        const resp_data = await response.json();
+        setProfile(resp_data.data);
+      } catch (error) {
+        goto("/404");
+        console.error("Error fetching profile:", error);
+      }
+    })();
+  }, [id]);
+
+  if (user) {
+    const userId = user.email.split("@")[0];
+    if (id === userId) {
+      goto("/dashboard");
+    }
+  }
+
+  const Tip = async () => {
+    try {
+      if (!connected) {
+        try {
+          await connect();
+        } catch {
+          toast("Connect your wallet to tip");
+          setVisible(true);
+        }
+        return;
+      }
+
+      if (!publicKey) {
+        toast.error("Wallet not connected");
+        return;
+      }
+
+      if (!profile || !profile.wallet) {
+        toast.error("Profile wallet address not available");
+        return;
+      }
+
+      if (profile.wallet === publicKey.toString()) {
+        toast.error("You cannot tip yourself");
+        return;
+      }
+
+      // Create and send the transaction
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: new PublicKey(profile.wallet),
+          lamports: amount * LAMPORTS_PER_SOL, 
+        })
+      );
+      transaction.feePayer = publicKey;
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+
+      const signedTx = await signTransaction(transaction)
+      const sig = await connection.sendRawTransaction(signedTx.serialize());
+      const signature = await connection.confirmTransaction(sig, "confirmed");
+
+      console.log("Transaction successful with signature:", signature);
+      toast.success("Tip sent successfully!");
+    } catch (err) {
+      console.error("Error sending tip:", err);
+      toast.error("Failed to send tip");
+    }
+  }
+  
+  // if (loading) {
+  //     return <h1>Loading...</h1>
+  // }
 
   return (
     <div className="profile-container">
       {/* Header Section */}
       <div className="profile-header">
         <img
-          src={user?.photoURL || "/default-avatar.png"}
+          src={profile && profile.picture}
           alt="Profile"
           className="profile-avatar"
         />
         <div className="profile-info">
-          <h2 className="profile-name">{user?.displayName || "Sarah Artist"}</h2>
-          <p className="profile-username">@{user?.email?.split("@")[0] || "sarahartist_"}</p>
-          <p className="profile-bio">
-            Digital artist creating vibrant illustrations and NFT collections.
-            Passionate about bringing imagination to life through colors and
-            creativity.
-          </p>
+          <h2 className="profile-name">{profile && profile.name}</h2>
+          <p className="profile-username">@{id}</p>
           <div className="profile-meta">
-            <span>📅 Joined March 2023</span>
+            <span>Joined {profile && profile.createdAt && new Date(profile.createdAt).toDateString()}</span>
           </div>
         </div>
         <div className="profile-actions">
-          <button className="tip-btn">💰 Connect Wallet & Tip</button>
-    
+          <button onClick={Tip} className="tip-btn">
+            <img style={{ marginLeft: "-0.25rem" }} src={SolanaIcon} alt="Solana" className="solana-icon" />
+            <p>Tip</p>
+          </button>
+          {
+            connected && <>
+              <button className="btn" onClick={async () => {
+                await disconnect();
+              }}>
+                Disconnect Wallet
+              </button>
+            </>
+          }
         </div>
       </div>
 
       {/* Stats Section */}
       <div className="profile-stats">
-        
         <div className="stat-box">
-          <h3>342</h3>
-          <p>Tips Received</p>
+          <h3>{profile?.earned != null ? profile.earned : "0"} SOL</h3>
+          <p>Total Earned</p>
         </div>
         <div className="stat-box">
-          <h3>$2,847</h3>
-          <p>Total Earned</p>
+          <h3>{profile?.tips != null ? profile.tips : "0"}</h3>
+          <p>Tips Received</p>
         </div>
       </div>
 
-      {/* About Section */}
-      <div className="profile-about">
-        <h3>About</h3>
-        <p>
-          Hi! I’m {user?.displayName || "Sarah"}, a digital artist based in San
-          Francisco. I specialize in creating vibrant, colorful illustrations
-          and NFT collections that bring imagination to life. My work is inspired
-          by everyday experiences, nature, and emotions, which I translate into
-          bold, expressive art.
-        </p>
-        <p>
-          Beyond NFTs, I also collaborate with brands and individuals to create
-          unique designs that stand out. When I’m not illustrating, I enjoy
-          exploring art museums, experimenting with new styles, and connecting
-          with fellow creators.
-        </p>
-      </div>
     </div>
   );
 };
