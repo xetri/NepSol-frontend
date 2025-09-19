@@ -21,8 +21,18 @@ export function AuthProvider({ children, auth }) {
     const value = {
         user,
         loading,
-        logOut: () => auth.signOut()
+        logout: async () => await auth.signOut()
     };
+    
+    // if(user) {
+    //     value.user = {
+    //         id: user.email.split("@")[0],
+    //         uid: user.uid,
+    //         name: user.displayName,
+    //         picture: user.photoURL,
+    //         createdAt: new Date(user.createdId)
+    //     };
+    // }
 
     return (
         <AuthContext.Provider value={value}>
